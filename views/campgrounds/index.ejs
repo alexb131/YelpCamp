@@ -2,21 +2,20 @@
 
 <div id="cluster-map"></div>
 <h1>All Campgrounds</h1>
-<div>
-	<a href="/campgrounds/new">Add Campground</a>
-</div>
 <% for(let campground of campgrounds) {%>
 <div class="card mb-3">
 	<div class="row">
 		<div class="col-md-4">
 			<% if(campground.images.length) {%>
 			<img
+				crossorigin="anonymous"
 				class="img-fluid"
 				src="<%= campground.images[0].url %>"
 				alt=""
 			/>
 			<% } else { %>
 			<img
+				crossorigin="anonymous"
 				class="img-fluid"
 				src="https://res.cloudinary.com/dnoiwueuc/image/upload/v1738326221/YelpCamp/hawutpsfbkaxuhlagpwh.jpg"
 				alt=""
