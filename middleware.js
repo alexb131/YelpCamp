@@ -58,3 +58,21 @@ module.exports.validateReview = (req, res, next) => {
 		next();
 	}
 };
+
+module.exports.checkTotalFileSize = (req, res, next) => {
+	let totalSize = 0;
+
+	if (req.files) {
+		for (const file of req.files) {
+			totalSize += file.size;
+		}
+	}
+
+	if (totalSize > 4.5 * 1024 * 1024) {
+		// 4.5 MB limit
+		const msg = "Total upload size must be under 4.5MB.";
+		throw new ExpressError(msg, 400);
+	}
+
+	next();
+};
